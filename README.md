@@ -32,3 +32,13 @@ php artisan make:controller PlayersController
 
 php artisan make:seeder PlayersTableSeeder
 php artisan db:seed --class=PlayersTableSeeder
+
+## Implement voucher endpoints
+php artisan make:model Voucher -m
+php artisan migrate
+
+## Implement wallet top_up endpoint
+php artisan make:model WalletHistory -m
+php artisan migrate
+
+php artisan make:controller WalletHistoriesController
