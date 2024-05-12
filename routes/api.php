@@ -23,9 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/players/{id}', [PlayersController::class, 'show']);
-Route::get('/channels', [ChannelsController::class, 'index']);
-Route::get('/banks', [BanksController::class, 'index']);
-Route::get('/wallet_histories/top_ups/{player_id}', [WalletHistoriesController::class,'top_ups']);
-
 Route::post('/sessions/store', [SessionsController::class, 'store']);
+Route::get('/channels', [ChannelsController::class, 'index']);
+Route::get('/players/{id}', [PlayersController::class, 'show']);
+Route::get('/banks', [BanksController::class, 'index']);
+Route::post('/wallet_histories/make_top_up', [WalletHistoriesController::class,'make_top_up']);
+Route::get('/wallet_histories/top_ups/{player_id}', [WalletHistoriesController::class,'top_ups']);

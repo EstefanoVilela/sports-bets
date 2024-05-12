@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Voucher extends Model {
     use HasFactory;
+    protected $fillable = ['amount', 'bank_id', 'deposit_date', 'deposit_time', 'deposit_image_path'];
 }
