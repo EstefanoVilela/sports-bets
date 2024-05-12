@@ -28,4 +28,4 @@ Route::get('/channels', [ChannelsController::class, 'index']);
 Route::get('/players/{id}', [PlayersController::class, 'show']);
 Route::get('/banks', [BanksController::class, 'index']);
 Route::post('/wallet_histories/make_top_up', [WalletHistoriesController::class,'make_top_up']);
-Route::get('/wallet_histories/top_ups/{player_id}', [WalletHistoriesController::class,'top_ups']);
+Route::get('/wallet_histories/top_ups/{user_id}', [WalletHistoriesController::class,'top_ups']);

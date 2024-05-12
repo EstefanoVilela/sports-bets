@@ -4,26 +4,27 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { Login } from './pages/Login'
 import { Home } from './pages/Home'
-import { History } from './pages/History'
 import { Navbar } from "./components/Navbar";
 import { useEffect, useState } from "react";
 
-function App() {
-  const [session, setSession] = useState(null);
+function Root() {
+  const [userId, setUserId] = useState(null);
 
-  const signIn = () => {
-    Cookies.set('userSession', 1);
-    setSession(1);
+  const signIn = ({ id, role_id }) => {
+    Cookies.set('userId', id);
+    Cookies.set('roleId', role_id);
+    setUserId(id);
   }
 
   const logout = () => {
-    Cookies.remove('userSession');
-    setSession(null);
+    Cookies.remove('userId');
+    Cookies.remove('roleId');
+    setUserId(null);
   }
 
   useEffect(() => {
-    const userCookie = Cookies.get('userSession');
-    setSession(userCookie)
+    const _userId = Cookies.get('userId');
+    setUserId(_userId);
   }, []);
 
   return (
@@ -31,12 +32,11 @@ function App() {
       <Navbar />
       <div className="container-fluid py-3">
         <Routes>
-          <Route path="/" element={ session ? <Home logout={ logout } /> : <Login signIn={ signIn } /> } />
-          <Route path="/history" element={ <History /> } />
+          <Route path="/" element={ userId ? <Home logout={ logout } /> : <Login signIn={ signIn } /> } />
         </Routes>
       </div>
     </BrowserRouter>
   );
 }
 
-export default App;
+export default Root;

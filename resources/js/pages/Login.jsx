@@ -19,7 +19,8 @@ export const Login = ({ signIn }) => {
   
       const res = await Axios.post("http://localhost:8000/api/sessions/store", form);
       Swal.fire('Bienvenido!', res.data.message, 'success');
-      signIn();
+
+      signIn(res.data.user);
     } catch (error) {
       console.log(error.message);
       Swal.fire('Error!', 'Revise sus credenciales e inténtelo de nuevo.', 'error');

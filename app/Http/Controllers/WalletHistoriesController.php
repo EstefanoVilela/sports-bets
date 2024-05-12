@@ -63,7 +63,9 @@ class WalletHistoriesController extends Controller {
         }
     }
 
-    public function top_ups($player_id) {
+    public function top_ups($user_id) {
+        $player = Player::where('user_id', $user_id)->firstOrFail();
+
         $wallet_histories = WalletHistory::join('vouchers', 'wallet_histories.voucher_id', '=', 'vouchers.id')
                             ->join('banks', 'vouchers.bank_id', '=', 'banks.id')
                             ->join('channels', 'wallet_histories.channel_id', '=', 'channels.id')
@@ -75,7 +77,7 @@ class WalletHistoriesController extends Controller {
                                 'vouchers.deposit_image_path',
                                 'banks.name as bank_name',
                                 'channels.name as channel_name'
-                            )->where('player_id', $player_id)
+                            )->where('player_id', $player->id)
                             ->get();
 
         return response()->json($wallet_histories);

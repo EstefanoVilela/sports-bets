@@ -11,6 +11,7 @@ class CreatePlayersTable extends Migration {
             $table->string('first_name', 50);
             $table->string('last_name', 50);
             $table->decimal('wallet_balance', 10, 2);
+            $table->foreignId('user_id')->constrained('users', 'id');
             $table->timestamps();
         });
     }

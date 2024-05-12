@@ -12,12 +12,14 @@ class PlayersTableSeeder extends Seeder {
             'first_name' => 'Estefano',
             'last_name' => 'Vilela',
             'wallet_balance' => 12.60,
+            'user_id' => 2,
         ]);
         Player::create([
             'id' => '77123456',
             'first_name' => 'Panchito',
             'last_name' => 'Vilela',
             'wallet_balance' => 24.90,
+            'user_id' => 3,
         ]);
     }
 }

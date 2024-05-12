@@ -1,12 +1,12 @@
 import Axios from "axios";
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
-export const History = () => {
-  const playerId = "77654321";
-
+export const PlayerHistory = ({ logout }) => {
   const [walletTopUps, setWalletTopUps] = useState([]);
   const getWalletHistories = async () => {
-    const res = await Axios.get("http://localhost:8000/api/wallet_histories/top_ups/"+playerId);
+    const userId = Cookies.get("userId");
+    const res = await Axios.get("http://localhost:8000/api/wallet_histories/top_ups/"+userId);
     setWalletTopUps(res.data);
   };
 
@@ -61,7 +61,7 @@ export const History = () => {
                     </td>
                   </tr>
                 ))
-                : <tr>
+                : <tr key="asdasd">
                     <td className="text-center" colSpan={ 6 }>No hay recargas.</td>
                   </tr>
               }
@@ -71,7 +71,7 @@ export const History = () => {
       </div>
 
       <div className="card-footer text-center">
-        <button className="btn btn-danger" style={{ width: "150px" }}>Volver</button>
+        <button onClick={logout} className="btn btn-secondary" style={{ width: "150px" }}>Logout</button>
       </div>
     </div>
   );
