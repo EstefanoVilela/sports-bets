@@ -7,9 +7,7 @@
         <title>Laravel</title>
     </head>
     <body>
-        <div class="container-fluid">
-            <div id="root"></div>
-            <script src="{{ mix('js/app.js') }}"></script>
-        </div>
+        <div id="root"></div>
+        <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>
