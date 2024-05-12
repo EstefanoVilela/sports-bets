@@ -52,3 +52,9 @@ php artisan db:seed --class=RolesTableSeeder
 
 php artisan make:migration add_role_id_to_users_table --table=users
 php artisan migrate
+
+## Login
+php artisan make:seeder UsersTableSeeder
+php artisan db:seed --class=UsersTableSeeder
+
+php artisan make:controller SessionsController

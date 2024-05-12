@@ -6,6 +6,7 @@ use App\Http\Controllers\PlayersController;
 use App\Http\Controllers\ChannelsController;
 use App\Http\Controllers\BanksController;
 use App\Http\Controllers\WalletHistoriesController;
+use App\Http\Controllers\SessionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,5 @@ Route::get('/players/{id}', [PlayersController::class, 'show']);
 Route::get('/channels', [ChannelsController::class, 'index']);
 Route::get('/banks', [BanksController::class, 'index']);
 Route::get('/wallet_histories/top_ups/{player_id}', [WalletHistoriesController::class,'top_ups']);
+
+Route::post('/sessions/store', [SessionsController::class, 'store']);
