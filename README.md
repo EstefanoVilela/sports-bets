@@ -15,8 +15,6 @@ php artisan make:controller BanksController
 php artisan make:seeder BanksTableSeeder
 php artisan db:seed --class=BanksTableSeeder
 
-
-
 ## Implement channel list endpoint
 php artisan make:model Channel -m
 php artisan migrate
@@ -25,3 +23,12 @@ php artisan make:controller ChannelsController
 
 php artisan make:seeder ChannelsTableSeeder
 php artisan db:seed --class=ChannelsTableSeeder
+
+## Implement player detail endpoint
+php artisan make:model Player -m
+php artisan migrate
+
+php artisan make:controller PlayersController
+
+php artisan make:seeder PlayersTableSeeder
+php artisan db:seed --class=PlayersTableSeeder
