@@ -78,13 +78,18 @@ export const AdvisorDashboard = ({ logout }) => {
       return false;
     }
 
-    if (amount === 0 | bankId === 0 || depositDate === "" || depositTime === "" || depositImage === "") {
+    if (amount === 0 | bankId === 0 || depositDate === "" || depositTime === "" || depositImage === null) {
       alert("Complete los datos del voucher!");
       return false;
     }
 
     if (amount > 500) {
       alert("Las recargas solo pueden ser de hasta 500 soles");
+      return false;
+    }
+
+    if (amount === 0) {
+      alert("Las recargas no pueden ser de 0 soles");
       return false;
     }
 
@@ -208,7 +213,7 @@ export const AdvisorDashboard = ({ logout }) => {
 
       <div className="card-footer text-center">
         <button onClick={toTopUpWallet} className="btn btn-primary me-2" style={{ width: "150px" }}>Confirmar</button>
-        <button onClick={reInitialize} className="btn btn-danger me-2" style={{ width: "150px" }}>Cancelar</button>
+        {/* <button onClick={reInitialize} className="btn btn-danger me-2" style={{ width: "150px" }}>Cancelar</button> */}
         <button onClick={logout} className="btn btn-secondary" style={{ width: "150px" }}>Logout</button>
       </div>
     </div>

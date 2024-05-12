@@ -7062,12 +7062,16 @@ var AdvisorDashboard = function AdvisorDashboard(_ref) {
       alert("Complete los datos del jugador!");
       return false;
     }
-    if (amount === 0 | bankId === 0 || depositDate === "" || depositTime === "" || depositImage === "") {
+    if (amount === 0 | bankId === 0 || depositDate === "" || depositTime === "" || depositImage === null) {
       alert("Complete los datos del voucher!");
       return false;
     }
     if (amount > 500) {
       alert("Las recargas solo pueden ser de hasta 500 soles");
+      return false;
+    }
+    if (amount === 0) {
+      alert("Las recargas no pueden ser de 0 soles");
       return false;
     }
     return true;
@@ -7263,13 +7267,6 @@ var AdvisorDashboard = function AdvisorDashboard(_ref) {
           width: "150px"
         },
         children: "Confirmar"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-        onClick: reInitialize,
-        className: "btn btn-danger me-2",
-        style: {
-          width: "150px"
-        },
-        children: "Cancelar"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
         onClick: logout,
         className: "btn btn-secondary",
