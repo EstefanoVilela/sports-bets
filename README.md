@@ -58,38 +58,3 @@ php artisan make:seeder UsersTableSeeder
 php artisan db:seed --class=UsersTableSeeder
 
 php artisan make:controller SessionsController
-
-## GUARDAR RECARGA
-```PHP
-public function make_top_up(Request $request) {
-    # Guardar voucher
-    $voucher = $request->validate([
-        'amount' => 'required',
-        'bank_id' => 'required',
-        'deposit_date' => 'required',
-        'deposit_time' => 'required',
-        'deposit_image_path' => 'required',
-    ]);
-    $voucher = Voucher::create($voucher);
-
-    # guardar recarga
-    $wallet_history = $request->validate([
-        // 'voucher_id' => 'required',
-        'player_id' => 'required',
-        'transacted_by' => 'required',
-        'channel_id' => 'required',
-    ]);
-    $wallet_history = new WalletHistory($wallet_history);
-    $wallet_history->voucher_id = $voucher->id;
-    $wallet_history->save();
-
-    # actualizar saldo
-    $player = Player::findOrFail($request->input('player_id'));
-    $current_balance = $player->wallet_balance;
-    $player->wallet_balance = $current_balance + $voucher->amount;
-    $player->save();
-
-    # response
-    return response()->json(['message' => 'La recarga se guardó exitosamente.'], 200);
-}
-```
