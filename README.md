@@ -42,3 +42,13 @@ php artisan make:model WalletHistory -m
 php artisan migrate
 
 php artisan make:controller WalletHistoriesController
+
+## Implement role model
+php artisan make:model Role -m
+php artisan migrate
+
+php artisan make:seeder RolesTableSeeder
+php artisan db:seed --class=RolesTableSeeder
+
+php artisan make:migration add_role_id_to_users_table --table=users
+php artisan migrate
