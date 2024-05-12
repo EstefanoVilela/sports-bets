@@ -6618,23 +6618,23 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function Root() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_6__.useState)(null),
     _useState2 = _slicedToArray(_useState, 2),
-    user = _useState2[0],
-    setUser = _useState2[1];
+    userId = _useState2[0],
+    setUserId = _useState2[1];
   var signIn = function signIn(_ref) {
     var id = _ref.id,
       role_id = _ref.role_id;
-    js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].set('user', id);
-    js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].set('role', role_id);
-    setUser(id);
+    js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].set('userId', id);
+    js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].set('roleId', role_id);
+    setUserId(id);
   };
   var logout = function logout() {
-    js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].remove('user');
-    js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].remove('role');
-    setUser(null);
+    js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].remove('userId');
+    js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].remove('roleId');
+    setUserId(null);
   };
   (0,react__WEBPACK_IMPORTED_MODULE_6__.useEffect)(function () {
-    var _user = js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].get('user');
-    setUser(_user);
+    var _userId = js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].get('userId');
+    setUserId(_userId);
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.BrowserRouter, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_Navbar__WEBPACK_IMPORTED_MODULE_5__.Navbar, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
@@ -6642,8 +6642,7 @@ function Root() {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Routes, {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
           path: "/",
-          element: user ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_Home__WEBPACK_IMPORTED_MODULE_4__.Home, {
-            user: user,
+          element: userId ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_Home__WEBPACK_IMPORTED_MODULE_4__.Home, {
             logout: logout
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_Login__WEBPACK_IMPORTED_MODULE_3__.Login, {
             signIn: signIn
@@ -7074,7 +7073,7 @@ var AdvisorDashboard = function AdvisorDashboard(_ref) {
     return true;
   };
   var prepare = function prepare() {
-    var userId = js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].get("user");
+    var userId = js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].get("userId");
     var form = new FormData();
     form.append("amount", amount);
     form.append("bank_id", bankId);
@@ -7316,14 +7315,14 @@ var Home = function Home(_ref) {
   var logout = _ref.logout;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState2 = _slicedToArray(_useState, 2),
-    role = _useState2[0],
-    setRole = _useState2[1];
+    roleId = _useState2[0],
+    setRoleId = _useState2[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var _role = js_cookie__WEBPACK_IMPORTED_MODULE_1__["default"].get("role");
-    setRole(_role);
+    var _roleId = js_cookie__WEBPACK_IMPORTED_MODULE_1__["default"].get("roleId");
+    setRoleId(_roleId);
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: role == 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_AdvisorDashboard__WEBPACK_IMPORTED_MODULE_2__.AdvisorDashboard, {
+    children: roleId == 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_AdvisorDashboard__WEBPACK_IMPORTED_MODULE_2__.AdvisorDashboard, {
       logout: logout
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_PlayerHistory__WEBPACK_IMPORTED_MODULE_3__.PlayerHistory, {
       logout: logout
@@ -7506,7 +7505,7 @@ var PlayerHistory = function PlayerHistory(_ref) {
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
-            userId = js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].get("user");
+            userId = js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].get("userId");
             _context.next = 3;
             return axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:8000/api/wallet_histories/top_ups/" + userId);
           case 3:
